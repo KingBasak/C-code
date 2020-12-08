@@ -1,0 +1,87 @@
+#include <stdio.h> //NAME-KINGSUK BASAK      ROLL NO - CSE2019/027
+#define MAX 4      // SETTING MAX SIZE OF ARRAY TO 4.
+void Insertion();  // DEFINING ALL THE FUNCTIONS USED HERE.
+void Deletion();
+void Display();
+int queue[MAX];
+int rear = -1;
+int front = -1;
+main()
+{
+    int choice; // USING A SWITCH CASE TO ASK FOR INSTRUCTIONS FROM USER.
+    while (1)
+    {
+        printf("\nPress (1) to insert element to queue\n");
+        printf("Press (2) to Delete element from queue\n");
+        printf("Press (3) to Quit\n");
+        printf("Enter your choice : ");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            printf("\n");
+            Insertion();
+            break;
+        case 2:
+            printf("\n");
+            Deletion();
+            break;
+        case 3:
+            exit(0);
+        default:
+            printf("\n");
+            printf("Invalid choice:\n");
+        }
+    }
+}
+
+void Insertion() // A FUNCTION TO INSERT NEW ELEMENT AT REAR+1 AND DISPLAY THE PRESENT CONDITION OF QUEUE.
+{
+    int New;
+    if (rear == MAX - 1)
+    {
+        printf("Queue Overflow\n");
+    }
+    else
+    {
+        if (front == -1)
+            front = 0;
+        printf("Enter element for insertion = ");
+        scanf("%d", &New);
+        rear = rear + 1;
+        queue[rear] = New;
+    }
+    Display();
+}
+
+void Deletion() // FUNCTION TO DELETE ELEMENT FROM THE QUEUE BY FIFO AND DISPLAY THE PRESENT CONDITION OF QUEUE.
+{
+    if (front == -1 || front > rear)
+    {
+        printf("Queue Underflow\n");
+        return;
+    }
+    else
+    {
+        printf("Element deleted from queue is : %d\n", queue[front]);
+        for (int i = 0; i <= rear - 1; i++)
+        {
+            queue[i] = queue[i + 1];
+        }
+        rear = rear - 1;
+    }
+    Display();
+}
+
+void Display() // FUNCTION TO DISPLAY THE WHOLE QUEUE IN END OF INSERTION() OR DELETION().
+{
+    if (front == -1)
+        printf("Queue is empty\n");
+    else
+    {
+        printf("Present Queue is : ");
+        for (int i = 0; i <= rear; i++)
+            printf(" %d <-- ", queue[i]);
+        printf("\n");
+    }
+}

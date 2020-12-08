@@ -1,0 +1,37 @@
+#include <stdio.h> //NAME- KINGSUK BASAK  ;  Roll - CSE2019/027;
+#include <stdlib.h>
+
+void main()
+{
+    int size1, size2, pos, ar1[100], ar2[100], merge[200];
+    do
+    {
+        printf("Enter size of first array less than 100 : "); //taking first array size less than 100.
+        scanf("%d", &size1);
+        printf("Enter size of second array less than 100 : "); //taking second array size less than 100.
+        scanf("%d", &size2);
+    } while (size1 > 100 && size2 > 100);
+    for (int i = 0; i < size1; i++) //creating first array of random elements.
+        ar1[i] = rand();
+    for (int i = 0; i < size2; i++) //creating second array of random elements.
+        ar2[i] = rand();
+    for (int i = 0; i < size1; i++) //coping first array to merge array.
+    {
+        merge[i] = ar1[i];
+    }
+    pos = size1;
+    for (int i = 0; i < size2; i++) //adding second array to merge array.
+    {
+        merge[pos] = ar2[i];
+        pos++;
+    }
+    printf("\nFirst array : ");
+    for (int i = 0; i < size1; i++) //printing first array.
+        printf("%d , ", ar1[i]);
+    printf("\nSecond array : ");
+    for (int i = 0; i < size2; i++) //printing second array.
+        printf("%d , ", ar2[i]);
+    printf("\nMerge array : ");
+    for (int i = 0; i < size1 + size2; i++) //printing merge array.
+        printf("%d , ", merge[i]);
+}

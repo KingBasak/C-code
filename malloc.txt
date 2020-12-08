@@ -1,0 +1,102 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node
+{
+    char data;
+    struct node *next;
+};
+
+struct node *top = NULL;
+
+void display();
+void push(char);
+void pop();
+void destroy();
+
+void main()
+{
+    int n;
+    char ch;
+    while (1)
+    {
+        printf("\n\nStack Menu\n1. Push \n2. Pop\n3. Display\n4. Destroy\n0. Exit\n");
+        scanf("%d", &n);
+        switch (n)
+        {
+        case 1:
+            printf("\n\nEnter a character for pushing : ");
+            scanf("%s", &ch);
+            push(ch);
+            break;
+        case 2:
+            pop();
+            break;
+        case 3:
+            display();
+            break;
+        case 4:
+            destroy();
+            break;
+        case 0:
+            destroy();
+            exit(0);
+        default:
+            printf("\nwrong choice.\n");
+        }
+    }
+}
+
+void push(char item)
+{
+    struct node *nptr = malloc(sizeof(struct node));
+    nptr->data = item;
+    nptr->next = top;
+    top = nptr;
+    printf("\n%c is pushed into the stack", item);
+}
+
+void display()
+{
+    printf("\nRemaining stack is : \n");
+    struct node *temp;
+    temp = top;
+    while (temp != NULL)
+    {
+        printf("\n%c", temp->data);
+        temp = temp->next;
+    }
+}
+
+void pop()
+{
+    if (top == NULL)
+    {
+        printf("\nStack is empty\n");
+    }
+    else
+    {
+        struct node *temp = top;
+        top = top->next;
+        printf("\n%c", temp->data);
+        free(temp);
+    }
+}
+
+void destroy()
+{
+    if (top == NULL)
+    {
+        printf("\nStack is already empty\n");
+    }
+    else
+    {
+        struct node *temp = top;
+        printf("\nRemaining stack is : \n");
+        while (top != NULL)
+        {
+            pop();
+        }
+        printf("\nStack Dectroyed.");
+    }
+}

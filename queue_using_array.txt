@@ -1,0 +1,80 @@
+#include <stdio.h> //    NAME-KINGSUK BASAK      ROLL NO - CSE2019/027
+#include <stdlib.h>
+#define MAX 100 // SETTING MAX SIZE OF ARRAY TO 100.
+void insert();  // DEFINING ALL THE FUNCTIONS USED HERE.
+void delete ();
+void display();
+int queue[MAX];
+int rear = -1;
+int front = -1;
+
+int main()
+{
+    int choice; // USING A SWITCH CASE TO ASK FOR INSTRUCTIONS FROM USER.
+    while (1)
+    {
+        printf("Press (1) to insert element to queue\n");
+        printf("Press (2) to Delete element from queue\n");
+        printf("Press (3) to Display all elements of queue\n");
+        printf("Press (4) to Quit\n");
+        printf("Enter your choice : ");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            insert();
+            break;
+        case 2:
+            delete ();
+            break;
+        case 3:
+            display();
+            break;
+        case 4:
+            exit(1);
+        default:
+            printf("Wrong choice\n");
+        }
+    }
+}
+void insert() // A FUNCTION TO INSERT NEW ELEMENT AT REAR+1.
+{
+    int item;
+    if (rear == MAX - 1)
+        printf("Queue Overflow\n");
+    else
+    {
+        if (front == -1)
+            front = 0;
+        printf("Insert a element in queue : ");
+        scanf("%d", &item);
+        rear = rear + 1;
+        queue[rear] = item;
+    }
+}
+void delete () // FUNCTION TO DELETE ELEMENT FROM THE QUEUE BY FIFO
+{
+    if (front == -1 || front > rear)
+    {
+        printf("Queue Underflow\n");
+        return;
+    }
+    else
+    {
+        printf("Element deleted from queue is : %d\n", queue[front]);
+        front = front + 1;
+    }
+}
+void display() // FUNCTION TO DISPLAY THE WHOLE ARRAY IN QUEUE FORMAT.
+{
+    int i;
+    if (front == -1)
+        printf("Queue is empty\n");
+    else
+    {
+        printf("Queue is : ");
+        for (i = front; i <= rear; i++)
+            printf("%d ", queue[i]);
+        printf("\n");
+    }
+}

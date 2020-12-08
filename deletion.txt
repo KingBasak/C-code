@@ -1,0 +1,31 @@
+#include <stdio.h> //NAME- KINGSUK BASAK  ;  Roll - CSE2019/027;
+#include <stdlib.h>
+
+void main()
+{
+    int size, pos, ar[100];
+    do
+    {
+        printf("Enter size of array less than 100 : "); //taking array size less than 100.
+        scanf("%d", &size);
+    } while (size > 100);
+    for (int i = 0; i < size; i++) //creating a array of random elements.
+        ar[i] = rand();
+
+    printf("\nArray is : "); //printing the array for reference.
+    for (int i = 0; i < size; i++)
+        printf("%d , ", ar[i]);
+    do
+    {
+        printf("\nEnter position for deletion from 1 and %d : ", size); //taking the position of deletion.
+        scanf("%d", &pos);
+    } while (pos < 1 || pos > size);
+    pos--;
+    for (int i = pos; i < size - 1; i++) //deleting at perticular position and shifting the whole array.
+        ar[i] = ar[i + 1];
+
+    size--;                                     //decreasing the size of array.
+    printf("\nNew array after deletion is : "); //printing the new array.
+    for (int i = 0; i < size; i++)
+        printf("%d , ", ar[i]);
+}

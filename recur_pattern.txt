@@ -1,0 +1,43 @@
+
+
+ *  *  *  *  *  * 
+ *  *  *  *  * 
+ *  *  *  * 
+ *  *  * 
+ *  * 
+ *
+
+
+#include <stdio.h>
+// NAME - KINGSUK BASAK           ROLL- CSE2019/027           UNIVERSITY ROLL- 11700119098
+
+void main()
+{
+    int n;
+    printf("Enter the line number : ");
+    scanf("%d", &n);
+    rowmanage(n);
+}
+
+int rowmanage(int a)
+{
+    if (a < 1)
+        return;
+    else
+    {
+        printf("\n");
+        printstar(a--);
+        rowmanage(a);
+    }
+}
+
+int printstar(int b)
+{
+    if (b < 1)
+        return;
+    else
+    {
+        printf(" * ");
+        printstar(b - 1);
+    }
+}

@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+void main()
+{
+    char name[50], str[50];
+    int a = 0;
+    printf("enter your name : ");
+    gets(name);
+    int len = strlen(name);
+    /* while (name[a] == ' ' || name[len] == ' ')
+    {
+        name[a] = '*';
+        name[len] = '*';
+        a++;
+        len--;
+    }*/
+    printf("Initials of your name is : ");
+    int j = 0;
+    for (int i = 1; i < len; i++)
+    {
+        if (name[i] == ' ')
+        {
+            printf("%c.", toupper(name[j]));
+            j = i + 1;
+        }
+    }
+    printf("%c", toupper(name[j]));
+    for (int k = j + 1; k < len; k++)
+    {
+        printf("%c", name[k]);
+    }
+}

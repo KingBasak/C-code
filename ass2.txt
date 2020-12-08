@@ -1,0 +1,98 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct node
+{
+    char name[50];
+    int roll;
+    int class;
+    struct node *next;
+};
+
+struct node *top = NULL;
+
+void push();
+void pop();
+void destroy();
+
+void main()
+{
+    int n;
+    char ch[50];
+    while (1)
+    {
+        printf("\n\nStack Menu :\n1. Push \n2. Pop\n0. Exit\n");
+        scanf("%d", &n);
+        switch (n)
+        {
+        case 1:
+            push();
+            break;
+        case 2:
+            pop();
+            break;
+        case 0:
+            destroy();
+            exit(0);
+        default:
+            printf("\nwrong choice.\n");
+        }
+    }
+}
+
+void push()
+{
+    printf("\n\nEnter Student details for pushing : \n");
+    struct node *nptr = malloc(sizeof(struct node));
+    int rollno, cls;
+    char name1[50];
+    printf("enter student name : ");
+    scanf("%s", &name1);
+    gets(name1);
+    printf("enter student roll number : ");
+    scanf("%d", &rollno);
+    printf("enter student class : ");
+    scanf("%d", &cls);
+    nptr->name[50] = name1;
+    nptr->roll = rollno;
+    nptr->class = cls;
+    nptr->next = top;
+    top = nptr;
+    printf("Student details pushed into the stack");
+}
+
+void pop()
+{
+    if (top == NULL)
+    {
+        printf("\n\nStack is empty\n\n");
+    }
+    else
+    {
+        struct node *temp = top;
+        top = top->next;
+        printf("\nName : %s", temp->name);
+        printf("\nRoll no : %d", temp->roll);
+        printf("\nClass : %d", temp->class);
+        free(temp);
+    }
+}
+
+void destroy()
+{
+    if (top == NULL)
+    {
+        printf("\nStack is already empty\n");
+    }
+    else
+    {
+        struct node *temp = top;
+        printf("\nRemaining stack is : \n");
+        while (top != NULL)
+        {
+            pop();
+        }
+        printf("\nStack Dectroyed.");
+    }
+}

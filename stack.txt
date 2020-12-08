@@ -1,0 +1,31 @@
+#include <stdio.h> //NAME- KINGSUK BASAK  ;  Roll - CSE2019/027;
+#include <string.h>
+
+char stack[100], string[100]; //Declaring global variables.
+int top = 0, len;
+void main()
+{
+    do // Taking input less than 100 to prevent ArrayOutOfBound exception.
+    {
+        printf("Enter string for reversal (less than 100 charecters): ");
+        gets(string);
+        len = strlen(string);
+    } while (len >= 100);
+    for (int i = 0; i < len; i++) //Calling push function for pushing to stack.
+        push(string[i]);
+
+    printf("Reverse of string is : "); //Calling pop function for poping elements from stack.
+    for (int i = 0; i <= len; i++)
+        pop();
+}
+
+void push(char ch) //Pushing elements to the stack
+{
+    stack[top++] = ch;
+}
+
+void pop() //Poping elements following LIFO system.(last in first out)
+{
+    printf("%c", stack[top--]);
+}
+

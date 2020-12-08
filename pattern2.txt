@@ -1,0 +1,148 @@
+
+
+          * 
+        * * * 
+      * * * * * 
+    * * * * * * * 
+  * * * * * * * * * 
+* * * * * * * * * * * 
+  * * * * * * * * *
+    * * * * * * *
+      * * * * *
+        * * *
+          *
+
+
+TYPE - 1
+
+
+#include <stdio.h>
+
+void main()
+{
+    int l, a, b;
+    do
+    {
+        printf("enter odd no of rows ");
+        scanf("%d", &l);
+    } while (l % 2 == 0);
+
+    a = ((l + 1) / 2);
+    b = ((l - 1) / 2);
+    for (int i = 0; i < l; i++)
+    {
+        if (i < a)
+        {
+            for (int j = i; j < b; j++)
+            {
+                printf("  ");
+            }
+            for (int k = 2 * i + 1; k > 0; k--)
+            {
+                printf("* ");
+            }
+            printf("\n");
+        }
+        else
+        {
+            for (int j = 0; j < i - a + 1; j++)
+            {
+                printf("  ");
+            }
+            for (int k = 0; k < 2 * b - 1; k++)
+            {
+                printf("* ");
+            }
+            b--;
+            printf("\n");
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+TYPE - 2
+
+
+
+
+
+
+
+
+
+#include <stdio.h>
+
+void main()
+{
+    int l, a, b;
+    do
+    {
+        printf("enter odd no of rows ");
+        scanf("%d", &l);
+    } while (l % 2 == 0);
+
+    a = ((l + 1) / 2);
+    b = ((l - 1) / 2);
+    for (int i = 0; i < l; i++)
+    {
+        if (i < a)
+        {
+            space(i, b);
+            star(0, 2 * i + 1);
+        }
+        else
+        {
+            space(0, i - a + 1);
+            star(0, 2 * b - 1);
+            b--;
+        }
+    }
+}
+
+void space(int x, int y)
+{
+    for (int i = x; i < y; i++)
+
+        printf("  ");
+}
+
+void star(int x, int y)
+{
+    for (int i = x; i < y; i++)
+
+        printf("* ");
+    printf("\n");
+}
+
+
+
+
+
+
+
+
+
+
+
+TYPE - 3
+
+
+
+
+
+
+
+
+
+
+
+
